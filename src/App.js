@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { Reset } from "styled-reset";
+import HeaderLayout from "./components/Layouts/HeaderLayout/HeaderLayout";
+import { Global } from "@emotion/react";
+import * as S from "./styles/common";
+import MainLayout from "./components/Layouts/MainLayout/MainLayout";
+import MainContainer from "./components/Containers/MainContainer/MainContainer";
+import { Route, Routes } from "react-router-dom";
+import MyProjects from "./pages/MyProjects/MyProjects";
+import MyShareProjects from "./pages/MyShareProjects/MyShareProjects";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Reset />
+      <Global styles={S.SCommon} />
+      <MainLayout>
+        <HeaderLayout />
+        <MainContainer>
+          <Routes>
+            <Route path="/projects/my" element={ <MyProjects />}/>
+            <Route path="/projects/share" element={ <MyShareProjects />}/>
+          </Routes>
+        </MainContainer>
+      </MainLayout>
+    </>
   );
 }
 
